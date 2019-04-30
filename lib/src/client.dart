@@ -95,7 +95,7 @@ class AirSonicClient implements AirSonicAPI {
         if (response.headers['content-type'].contains("application/json")) {
           final responseData = convert.jsonDecode(response.body);
           final AirSonicResponse sonicResponse = AirSonicResponse(
-              responseData['airsonic-response'], route.dataKey);
+              responseData['subsonic-response'], route.dataKey);
           if (sonicResponse.isOkay) {
             return sonicResponse;
           } else {

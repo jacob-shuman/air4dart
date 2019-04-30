@@ -4,11 +4,24 @@ import 'package:test/test.dart';
 import 'models/mock_client.dart';
 
 void main() {
+  group("Real Tests", () {
+    AirSonicClient airSonic;
+
+    setUpAll(() {
+      airSonic = new AirSonicClient("http://localhost:32781", "admin", "admin",
+          timeout: 10000);
+    });
+
+    test("Get Ping", () async {
+      var data = await airSonic.getPing();
+      expect(data.isOkay, isTrue);
+    });
+  });
   group("REST Tests", () {
     AirSonicClient airSonic;
 
     setUpAll(() {
-      airSonic = new MockClient("http://192.168.50.141:4040", "admin", "admin",
+      airSonic = new MockClient("http://localhost:32781", "admin", "admin",
           timeout: 1);
     });
 

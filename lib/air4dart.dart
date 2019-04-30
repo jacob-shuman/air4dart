@@ -1,7 +1,7 @@
 /// Support for doing something awesome.
 ///
 /// More dartdocs go here.
-library sub4dart;
+library air4dart;
 
 export 'src/client.dart';
 export 'src/enums.dart';

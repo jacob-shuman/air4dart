@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:sub4dart/src/models/route.dart';
-import 'package:sub4dart/src/models/subsonic_response.dart';
-import 'package:sub4dart/sub4dart.dart';
+import 'package:air4dart/src/models/route.dart';
+import 'package:air4dart/src/models/airsonic_response.dart';
+import 'package:air4dart/air4dart.dart';
 
-class MockClient extends SubSonicClient {
+class MockClient extends AirSonicClient {
   MockClient(String path, String username, String password, {int timeout})
       : super(path, username, password, timeout: timeout);
 
   @override
-  Future<SubSonicResponse> request(Route route) async {
-    return SubSonicResponse({"status": "ok"}, null);
+  Future<AirSonicResponse> request(Route route) async {
+    return AirSonicResponse({"status": "ok"}, null);
   }
 
   @override

@@ -11,12 +11,12 @@ class MissingRequiredArgument extends BaseException {
   MissingRequiredArgument(String message, int code) : super(message, code);
 }
 
-/// 	Incompatible Subsonic REST protocol version. Client must upgrade.
+/// 	Incompatible Airsonic REST protocol version. Client must upgrade.
 class ClientOutOfDate extends BaseException {
   ClientOutOfDate(String message, int code) : super(message, code);
 }
 
-/// Incompatible Subsonic REST protocol version. Server must upgrade.
+/// Incompatible Airsonic REST protocol version. Server must upgrade.
 class ServerOutOfDate extends BaseException {
   ServerOutOfDate(String message, int code) : super(message, code);
 }
@@ -36,7 +36,7 @@ class UnAuthorized extends BaseException {
   UnAuthorized(String message, int code) : super(message, code);
 }
 
-/// Server does not have a Subsonic Premium subscription
+/// Server does not have a Airsonic Premium subscription
 class RequiresPremium extends BaseException {
   RequiresPremium(String message, int code) : super(message, code);
 }

@@ -1,4 +1,4 @@
-import 'package:sub4dart/src/models/endpoint.dart';
+import 'package:air4dart/src/models/endpoint.dart';
 
 class Route implements EndPoint {
   var endpoint;

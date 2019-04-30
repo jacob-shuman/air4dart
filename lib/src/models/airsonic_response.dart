@@ -1,8 +1,8 @@
-class SubSonicResponse {
+class AirSonicResponse {
   /// The nested key to allow for easier lookup of data.
   final String _responseKey;
 
-  /// The data returned by Subsonic.
+  /// The data returned by Airsonic.
   final Map<String, dynamic> _data;
 
   /// Uses the [_responseKey] if applicable to get the actual data.
@@ -18,5 +18,5 @@ class SubSonicResponse {
   /// Checks if the Response was successful.
   bool get isOkay => _data['status'] == "ok";
 
-  SubSonicResponse(this._data, this._responseKey);
+  AirSonicResponse(this._data, this._responseKey);
 }

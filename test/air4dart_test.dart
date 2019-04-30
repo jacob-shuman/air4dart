@@ -1,40 +1,40 @@
-import 'package:sub4dart/sub4dart.dart';
+import 'package:air4dart/air4dart.dart';
 import 'package:test/test.dart';
 
 import 'models/mock_client.dart';
 
 void main() {
   group("REST Tests", () {
-    SubSonicClient subSonic;
+    AirSonicClient airSonic;
 
     setUpAll(() {
-      subSonic = new MockClient("http://192.168.50.141:4040", "admin", "admin",
+      airSonic = new MockClient("http://192.168.50.141:4040", "admin", "admin",
           timeout: 1);
     });
 
     test("Get Ping", () async {
-      var data = await subSonic.getPing();
+      var data = await airSonic.getPing();
       expect(data.isOkay, isTrue);
     });
 
     test("Get License", () async {
-      var data = await subSonic.getLicense();
+      var data = await airSonic.getLicense();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Music Folders", () async {
-      var data = await subSonic.getMusicFolders();
+      var data = await airSonic.getMusicFolders();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Indexes", () async {
-      var data = await subSonic.getIndexes();
+      var data = await airSonic.getIndexes();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Music Directory", () async {
       try {
-        var data = await subSonic.getMusicDirectory("1");
+        var data = await airSonic.getMusicDirectory("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -42,18 +42,18 @@ void main() {
     });
 
     test("Get Genres", () async {
-      var data = await subSonic.getGenres();
+      var data = await airSonic.getGenres();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Artists", () async {
-      var data = await subSonic.getArtists();
+      var data = await airSonic.getArtists();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Artist", () async {
       try {
-        var data = await subSonic.getArtist("1");
+        var data = await airSonic.getArtist("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -62,7 +62,7 @@ void main() {
 
     test("Get Album", () async {
       try {
-        var data = await subSonic.getAlbum("1");
+        var data = await airSonic.getAlbum("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -71,7 +71,7 @@ void main() {
 
     test("Get Song", () async {
       try {
-        var data = await subSonic.getSong("1");
+        var data = await airSonic.getSong("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -79,13 +79,13 @@ void main() {
     });
 
     test("Get Videos", () async {
-      var data = await subSonic.getVideos();
+      var data = await airSonic.getVideos();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Video Info", () async {
       try {
-        var data = await subSonic.getVideoInfo("1");
+        var data = await airSonic.getVideoInfo("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -94,14 +94,14 @@ void main() {
 
     test("Get Artist Info", () async {
       try {
-        var data = await subSonic.getArtistInfo("1");
+        var data = await airSonic.getArtistInfo("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
       }
 
       try {
-        var data2 = await subSonic.getArtistInfo("1", useId3: true);
+        var data2 = await airSonic.getArtistInfo("1", useId3: true);
         expect(data2.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -110,7 +110,7 @@ void main() {
 
     test("Get Album Info", () async {
       try {
-        var data = await subSonic.getAlbumInfo("1");
+        var data = await airSonic.getAlbumInfo("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -119,7 +119,7 @@ void main() {
 
     test("Get Similar Songs", () async {
       try {
-        var data = await subSonic.getSimilarSongs("1");
+        var data = await airSonic.getSimilarSongs("1");
         expect(data.isOkay, isTrue);
       } on DataNotFoundException catch (e) {
         expect(e.code, equals(70));
@@ -127,49 +127,49 @@ void main() {
     });
 
     test("Get Top Songs", () async {
-      var data = await subSonic.getTopSongs("Linkin Park");
+      var data = await airSonic.getTopSongs("Linkin Park");
       expect(data.isOkay, isTrue);
     });
 
     test("Get Album List", () async {
-      var data = await subSonic.getAlbumList(SearchType.random);
+      var data = await airSonic.getAlbumList(SearchType.random);
       expect(data.isOkay, isTrue);
     });
 
     test("Get Random Songs", () async {
-      var data = await subSonic.getRandomSongs();
+      var data = await airSonic.getRandomSongs();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Songs By Genre", () async {
-      var data = await subSonic.getSongsByGenre("rock");
+      var data = await airSonic.getSongsByGenre("rock");
       expect(data.isOkay, isTrue);
     });
 
     test("Get Now Playing", () async {
-      var data = await subSonic.getNowPlaying();
+      var data = await airSonic.getNowPlaying();
       expect(data.isOkay, isTrue);
     });
 
     test("Get Starred", () async {
-      var data = await subSonic.getStarred();
+      var data = await airSonic.getStarred();
       expect(data.isOkay, isTrue);
     });
 
     test("Search", () async {
-      var data = await subSonic.search("Linkin Park");
+      var data = await airSonic.search("Linkin Park");
       expect(data.isOkay, isTrue);
     });
 
     test("Get Playlists", () async {
-      var data = await subSonic.getPlaylists();
+      var data = await airSonic.getPlaylists();
       expect(data.isOkay, isTrue);
       expect(data.data, isNotEmpty);
     });
 
     test("Change Credentials ", () async {
       final client =
-          SubSonicClient("http://192.168.50.142:4040", "lucas", "password");
+          AirSonicClient("http://192.168.50.142:4040", "lucas", "password");
       client.changeSettings(
           username: "lucas", host: "http://192.168.50.142:4040");
       try {

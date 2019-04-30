@@ -1,6 +1,7 @@
 **This project was forked from [LucasCLuk](https://github.com/LucasCLuk)'s [sub4dart](https://github.com/LucasCLuk/sub4dart) repo**
 
-An [Airsonic](https://airsonic.github.io) API wrapper written in Dart
+A [Subsonic](http://www.subsonic.org/pages/index.jsp) API wrapper written in Dart.
+This package is modified from LucasCLuk's sub4sonic to accomodate [Airsonic](https://airsonic.github.io)'s version of the Subsonic API.
 
 
 Created from templates made available by Stagehand under a BSD-style

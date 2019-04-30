@@ -14,7 +14,7 @@ import 'package:air4dart/src/airsonic_api.dart'; // for the utf8.encode method
 
 class AirSonicClient implements AirSonicAPI {
   /// Unique Client ID sent with every request.
-  final String _clientID = "Sub4Dartv01";
+  final String _clientID = "Air4Dartv01";
 
   /// The Base REST API route used.
   final String _baseRoute = "/rest";
@@ -40,7 +40,7 @@ class AirSonicClient implements AirSonicAPI {
   AirSonicClient(String path, this._username, String password, {int timeout}) {
     _baseParams = {
       "u": this._username,
-      "v": "1.16.1",
+      "v": "1.15.0",
       "c": _clientID,
       "f": "json",
     };

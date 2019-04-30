@@ -12,7 +12,7 @@ Created from templates made available by Stagehand under a BSD-style
 A simple usage example:
 
 ```dart
-import 'package:sub4dart/sub4dart.dart';
+import 'package:air4dart/air4dart.dart';
 
 main() async {
   var airsonic = new AirSonic("https://music.example.com","John","Doe");

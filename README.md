@@ -1,4 +1,7 @@
-A [subsonic] API wrapper written in Dart
+**This project was forked from [LucasCLuk](https://github.com/LucasCLuk)'s [sub4dart](https://github.com/LucasCLuk/sub4dart) repo**
+
+An [Airsonic](https://airsonic.github.io) API wrapper written in Dart
+
 
 Created from templates made available by Stagehand under a BSD-style
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
@@ -11,8 +14,8 @@ A simple usage example:
 import 'package:sub4dart/sub4dart.dart';
 
 main() async {
-  var subsonic = new SubSonic("https://music.example.com","John","Doe");
-  await subsonic.getPing(); // Returns a response if successfully authenticated
+  var airsonic = new AirSonic("https://music.example.com","John","Doe");
+  await airsonic.getPing(); // Returns a response if successfully authenticated
 }
 ```
 

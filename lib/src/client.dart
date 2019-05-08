@@ -70,7 +70,7 @@ class AirSonicClient implements AirSonicAPI {
   }
 
   /// Combines any route parameters and builds a [Uri] to represent the final endpoint.
-  Uri buildEndpoint(Route route) {
+  Uri _buildEndpoint(Route route) {
     final Map<String, dynamic> payload = {"t": _password, "s": _salt};
     route.params?.forEach(
         (key, value) => value != null ? payload[key] = value.toString() : null);
@@ -87,7 +87,7 @@ class AirSonicClient implements AirSonicAPI {
   /// Requests the data from Airsonic and returns a [AirSonicResponse]
   Future<AirSonicResponse> request(Route route) async {
     final http.Client client = http.Client();
-    final endpoint = buildEndpoint(route);
+    final endpoint = _buildEndpoint(route);
     try {
       final http.Response response =
           await client.get(endpoint).timeout(Duration(seconds: _timeOut));
@@ -147,7 +147,7 @@ class AirSonicClient implements AirSonicAPI {
 
   /// Used for endpoints that return binary data
   Future<HttpClientResponse> requestData(Route route) async {
-    final endpoint = buildEndpoint(route);
+    final endpoint = _buildEndpoint(route);
     HttpClientResponse data = await HttpClient()
         .getUrl(endpoint)
         .timeout(Duration(seconds: _timeOut))
@@ -436,6 +436,26 @@ class AirSonicClient implements AirSonicAPI {
       "converted": converted
     });
     return requestData(route);
+  }
+
+  /// Gets [Uri] for streaming a given media file.
+  Uri getStreamUri(String id,
+      {String maxBitRate,
+      String format,
+      int timeOffset,
+      String resolution,
+      bool estimateContentLength = false,
+      bool converted = false}) {
+    final route = Route("/stream", dataKey: null, payload: {
+      "id": id,
+      "maxBitRate": maxBitRate,
+      "formate": format,
+      "timeOffset": timeOffset,
+      "size": resolution,
+      "estimateContentLength": estimateContentLength,
+      "converted": converted
+    });
+    return _buildEndpoint(route);
   }
 
   /// Downloads a given media file. Similar to [stream], but this method returns the original media data without transcoding or downsampling.

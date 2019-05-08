@@ -8,12 +8,17 @@ void main() {
     AirSonicClient airSonic;
 
     setUpAll(() {
-      airSonic = new AirSonicClient("http://localhost:32781", "admin", "admin");
+      airSonic = new AirSonicClient("http://localhost:32768", "admin", "admin");
     });
 
     test("Get Ping", () async {
       var data = await airSonic.getPing();
       expect(data.isOkay, isTrue);
+    });
+
+    test("Get Stream Uri", () async {
+      var data = airSonic.getStreamUri("19");
+      expect(data, isNotNull);
     });
   });
   group("REST Tests", () {

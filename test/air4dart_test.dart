@@ -8,8 +8,7 @@ void main() {
     AirSonicClient airSonic;
 
     setUpAll(() {
-      airSonic = new AirSonicClient("http://localhost:32781", "admin", "admin",
-          timeout: 10000);
+      airSonic = new AirSonicClient("http://localhost:32781", "admin", "admin");
     });
 
     test("Get Ping", () async {

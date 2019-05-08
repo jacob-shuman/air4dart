@@ -70,7 +70,7 @@ class AirSonicClient implements AirSonicAPI {
   }
 
   /// Combines any route parameters and builds a [Uri] to represent the final endpoint.
-  Uri _buildEndpoint(Route route) {
+  Uri buildEndpoint(Route route) {
     final Map<String, dynamic> payload = {"t": _password, "s": _salt};
     route.params?.forEach(
         (key, value) => value != null ? payload[key] = value.toString() : null);
@@ -87,7 +87,7 @@ class AirSonicClient implements AirSonicAPI {
   /// Requests the data from Airsonic and returns a [AirSonicResponse]
   Future<AirSonicResponse> request(Route route) async {
     final http.Client client = http.Client();
-    final endpoint = _buildEndpoint(route);
+    final endpoint = buildEndpoint(route);
     try {
       final http.Response response =
           await client.get(endpoint).timeout(Duration(seconds: _timeOut));
@@ -147,7 +147,7 @@ class AirSonicClient implements AirSonicAPI {
 
   /// Used for endpoints that return binary data
   Future<HttpClientResponse> requestData(Route route) async {
-    final endpoint = _buildEndpoint(route);
+    final endpoint = buildEndpoint(route);
     HttpClientResponse data = await HttpClient()
         .getUrl(endpoint)
         .timeout(Duration(seconds: _timeOut))

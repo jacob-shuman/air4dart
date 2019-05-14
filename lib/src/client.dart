@@ -482,6 +482,13 @@ class AirSonicClient implements AirSonicAPI {
     return requestData(route);
   }
 
+  /// Returns a cover art image uri.
+  Uri getCoverArtUri(String id, {String size}) {
+    final route =
+        Route("/getCoverArt", dataKey: null, payload: {"id": id, "size": size});
+    return _buildEndpoint(route);
+  }
+
   /// Searches for and returns lyrics for a given song.
   Future<AirSonicResponse> getLyrics({String artist, String title}) async {
     final route = Route("/getLyrics",

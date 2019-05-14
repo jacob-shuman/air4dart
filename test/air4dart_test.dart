@@ -8,7 +8,8 @@ void main() {
     AirSonicClient airSonic;
 
     setUpAll(() {
-      airSonic = new AirSonicClient("http://localhost:32768", "admin", "admin");
+      airSonic =
+          new AirSonicClient("http://192.168.0.14:32772", "admin", "admin");
     });
 
     test("Get Ping", () async {
@@ -19,6 +20,16 @@ void main() {
     test("Get Stream Uri", () async {
       var data = airSonic.getStreamUri("19");
       expect(data, isNotNull);
+    });
+
+    test("Get Cover Art Uri", () async {
+      var data = await airSonic.getCoverArtUri("71");
+      expect(data, isNotNull);
+    });
+
+    test("Get Random Songs", () async {
+      var data = await airSonic.getRandomSongs();
+      expect(data.isOkay, isTrue);
     });
   });
   group("REST Tests", () {
